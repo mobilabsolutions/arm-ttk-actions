@@ -11,7 +11,7 @@ LABEL "maintainer"="Justin Yoo <no-reply@aliencube.com>"
 
 # Install git
 RUN apt-get update && apt-get install -y \
-    git \
+    git jq \
  && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/Azure/arm-ttk.git /arm-ttk
