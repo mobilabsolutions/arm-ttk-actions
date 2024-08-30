@@ -48,9 +48,13 @@ $output = $results | `
 
 $output
 
-Write-Output "::set-output name=results::$output"
+$failed=$output | jq '.[].Passed | select (. == false)' | wc -l
+echo "Failed: $failed"
 
 Remove-Variable output
 Remove-Variable filepath
 Remove-Variable milliseconds
 Remove-Variable results
+
+exit $failed
+
